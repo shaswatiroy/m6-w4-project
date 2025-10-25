@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/auth/(.*)",
+      "destination": "https://m6-w4-project-backend.onrender.com/auth/$1"
+    },
+    {
+      "source": "/blog/(.*)",
+      "destination": "https://m6-w4-project-backend.onrender.com/blog/$1"
+    }
+  ]
+}
