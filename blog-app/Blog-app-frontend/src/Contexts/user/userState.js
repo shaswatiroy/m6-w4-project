@@ -10,8 +10,18 @@ const UserState = (props) => {
     const [blog, setBlog] = useState({});
     const [name, setName] = useState('');
     const [edit, setEdit] = useState({ _id: '', head: '', author: name, title: '', mainImg: '', tag: '', elements: [], isnew: true });
-    const url = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8080'; // Default to localhost if not set
-    // const url = 'https://blog-app-backend-fr80.onrender.com';
+    
+    const isBrowser = typeof window !== "undefined";
+    const isVercel = isBrowser && window.location.hostname.endsWith(".vercel.app");
+    let url = "";
+
+    if(isVercel) {
+        console.log("Running on Vercel");
+        url = "";
+    } else {
+        url = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8080'; // Default to localhost if not set  
+    }
+
     const showAlert = (type, msg) => {
         setAlert({ state: true, type, msg })
         // Auto-hide is now handled in the Alert component
